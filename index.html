@@ -1,10 +1,16 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2214%22 fill=%22%230B7480%22/%3E%3Cpath d=%22M16 7v18M7 16h18%22 stroke=%22%23fff%22 stroke-width=%222.4%22 stroke-linecap=%22round%22/%3E%3C/svg%3E">
 <title>Calipr | Fetal ultrasound calculator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
+html,body{margin:0}body{padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}img{max-width:100%}
+
 /* Layout: sticky header with dating strip; two-panel workspace (inputs left, result + chart right) that stacks on phones. Sonogram-console feel: cool neutrals, teal readout accent, caliper cross for the patient value. */
 :root{
   --bg:#F3F6F7; --surface:#FFFFFF; --surface-2:#EAF0F2; --fg:#12191C; --muted:#56656C; --line:#D5DFE3;
@@ -42,7 +48,7 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background
 .brand{display:flex;align-items:center;gap:10px;min-width:0}
 .brand svg{flex:none}
 .brand h1{font-size:22px;line-height:1.1}
-.brand p{margin:0;color:var(--muted);font-size:12.5px}
+.brand p{margin:0;color:var(--muted);font-size:14px}
 .search{margin-left:auto;position:relative;flex:1 1 240px;max-width:360px}
 .search input{width:100%;padding:8px 12px 8px 34px;border:1px solid var(--line);border-radius:999px;background:var(--surface-2)}
 .search svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted)}
@@ -54,10 +60,10 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background
 /* Dating strip */
 .dating{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 18px;padding-block:10px 14px;border-top:1px solid var(--line)}
 .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface-2)}
-.seg button{border:0;background:none;padding:6px 12px;cursor:pointer;font-size:13.5px}
+.seg button{border:0;background:none;padding:6px 12px;cursor:pointer;font-size:14px}
 .seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-fg)}
 .field{display:flex;flex-direction:column;gap:3px;min-width:0}
-.field label,.lbl{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.field label,.lbl{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .field input{border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:7px 9px;min-width:0}
 .field input[type=number]{width:84px}
 .wd{display:flex;align-items:center;gap:6px}
@@ -66,23 +72,23 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background
 .calc-pick{margin:0 0 14px}
 .calc-pick .lbl{display:block;margin-bottom:6px}
 .calc-pick .cp-tabs{display:flex;flex-wrap:wrap;gap:6px;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:10px}
-.calc-pick .cp-tabs button{border:1px solid var(--line);background:var(--surface-2);padding:6px 12px;border-radius:999px;font-size:13.5px;color:var(--fg);cursor:pointer;white-space:nowrap}
+.calc-pick .cp-tabs button{border:1px solid var(--line);background:var(--surface-2);padding:6px 12px;border-radius:999px;font-size:14px;color:var(--fg);cursor:pointer;white-space:nowrap}
 .calc-pick .cp-tabs button:hover{border-color:var(--accent)}
 .calc-pick .cp-tabs button[aria-selected="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:700}
-.calc-pick .cp-n{font-size:11px;font-weight:400;background:var(--surface);border-radius:999px;padding:1px 6px;margin-left:5px;color:var(--muted)}
+.calc-pick .cp-n{font-size:14px;font-weight:400;background:var(--surface);border-radius:999px;padding:1px 6px;margin-left:5px;color:var(--muted)}
 .calc-pick .cp-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
-.calc-pick .cp-items button{text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;padding:8px 10px;font-size:13.5px;line-height:1.3;cursor:pointer}
+.calc-pick .cp-items button{text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;padding:8px 10px;font-size:14px;line-height:1.3;cursor:pointer}
 .calc-pick .cp-items button:hover{border-color:var(--accent)}
 .calc-pick .cp-items button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-fg);font-weight:600}
 .kd-m.calc-off{display:none!important}
 .fc-ct.calc-on select{display:none}
 a.cite{color:inherit;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px}
 a.cite:hover,a.cite:focus-visible{color:var(--accent)}
-.dating .ga-clear{padding-bottom:10px;font-size:13px}
+.dating .ga-clear{padding-bottom:10px;font-size:14px}
 .ga-readout{margin-left:auto;display:flex;align-items:baseline;gap:8px;padding:6px 12px;border-radius:8px;background:var(--accent-soft)}
 .ga-readout b{font-family:var(--font-mono);font-size:22px;font-weight:500;color:var(--accent)}
-.ga-readout span{font-size:12px;color:var(--muted)}
-.ga-msg{flex-basis:100%;margin:4px 0 0;font-size:13px;color:var(--crit,#b42318)}
+.ga-readout span{font-size:14px;color:var(--muted)}
+.ga-msg{flex-basis:100%;margin:4px 0 0;font-size:14px;color:var(--crit,#b42318)}
 
 /* Workspace */
 main{padding-block:20px 48px}
@@ -98,23 +104,23 @@ main{padding-block:20px 48px}
 .stack{display:flex;flex-direction:column;gap:12px}
 .row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .row3 .field input{width:100%}
-.unit{font-size:12px;color:var(--muted);text-transform:none;letter-spacing:0}
+.unit{font-size:14px;color:var(--muted);text-transform:none;letter-spacing:0}
 .efw-out{display:flex;justify-content:space-between;align-items:baseline;padding:10px 12px;border-radius:8px;background:var(--surface-2)}
 .efw-out b{font-family:var(--font-mono);font-size:20px;font-weight:500}
-.hint{font-size:12.5px;color:var(--muted);margin:0}
-.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:2px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
-.linkbtn{border:0;background:none;color:var(--accent);cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:2px;font-size:12.5px}
+.hint{font-size:14px;color:var(--muted);margin:0}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:14px;padding:2px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
+.linkbtn{border:0;background:none;color:var(--accent);cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:2px;font-size:14px}
 
 /* Nomogram selector */
 .nomo{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.nomo .seg button{font-size:13px}
+.nomo .seg button{font-size:14px}
 
 /* Result */
 .result{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 22px;align-items:center}
 @media (max-width:520px){.result{grid-template-columns:minmax(0,1fr)}}
 .centile{font-family:var(--font-display);font-weight:700;font-size:64px;line-height:.9;letter-spacing:-.01em}
 .centile sup{font-size:.38em;font-weight:600;margin-left:2px;vertical-align:top;position:relative;top:.35em}
-.centile small{display:block;font-family:var(--font-body);font-weight:400;font-size:13px;letter-spacing:0;color:var(--muted);margin-top:6px}
+.centile small{display:block;font-family:var(--font-body);font-weight:400;font-size:14px;letter-spacing:0;color:var(--muted);margin-top:6px}
 .status{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;padding:5px 12px;border-radius:999px;width:fit-content}
 .status.ok{background:var(--band);color:var(--accent)}
 .status.low{background:var(--low-soft);color:var(--low)}
@@ -123,11 +129,11 @@ main{padding-block:20px 48px}
 .status i{width:8px;height:8px;border-radius:50%;background:currentColor}
 .summary{margin:8px 0 0;color:var(--fg)}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.btn{border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:13.5px}
+.btn{border:1px solid var(--line);background:var(--surface-2);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:14px}
 .btn.primary{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
-.warn{display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding:10px 12px;border-radius:8px;background:var(--low-soft);color:var(--fg);border:1px solid color-mix(in srgb,var(--low) 35%,transparent);font-size:13.5px}
+.warn{display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding:10px 12px;border-radius:8px;background:var(--low-soft);color:var(--fg);border:1px solid color-mix(in srgb,var(--low) 35%,transparent);font-size:14px}
 .warn svg{flex:none;color:var(--low);margin-top:2px}
-.err{color:var(--crit);font-size:13.5px;margin:0}
+.err{color:var(--crit);font-size:14px;margin:0}
 
 /* Chart */
 .chart-wrap{margin-top:14px;overflow-x:auto}
@@ -135,15 +141,15 @@ svg.chart{width:100%;min-width:520px;height:auto;display:block}
 svg.chart text{font-family:var(--font-mono);font-size:11px;fill:var(--muted)}
 svg.chart .ax{stroke:var(--line)}
 svg.chart .grid line{stroke:var(--line);stroke-dasharray:2 4}
-.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin-top:6px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;color:var(--muted);margin-top:6px}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .legend svg{flex:none}
 
 /* Lines table */
 .tbl-wrap{overflow-x:auto;margin-top:14px}
-table.lines{border-collapse:collapse;width:100%;min-width:480px;font-size:13.5px}
+table.lines{border-collapse:collapse;width:100%;min-width:480px;font-size:14px}
 table.lines th,table.lines td{padding:7px 8px;text-align:right;border-bottom:1px solid var(--line)}
-table.lines th{font-weight:400;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+table.lines th{font-weight:400;color:var(--muted);font-size:14px;text-transform:uppercase;letter-spacing:.05em}
 table.lines th:first-child,table.lines td:first-child{text-align:left}
 table.lines td{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
 table.lines td.here{background:var(--accent-soft);color:var(--accent);font-weight:500}
@@ -158,11 +164,11 @@ summary::after{content:"+";font-family:var(--font-mono);color:var(--muted)}
 details[open] summary::after{content:"\2212"}
 .howto{display:grid;gap:12px;margin-top:10px}
 .howto div{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;align-items:start}
-.howto b.tag{font-family:var(--font-mono);font-weight:500;font-size:13px;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:3px 0;text-align:center}
+.howto b.tag{font-family:var(--font-mono);font-weight:500;font-size:14px;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:3px 0;text-align:center}
 .howto p{margin:0}
-.cite{font-size:12.5px;color:var(--muted)}
+.cite{font-size:14px;color:var(--muted)}
 .cite a{color:var(--accent)}
-ol.refs{margin:8px 0 0;padding-left:20px;display:grid;gap:8px;font-size:13.5px}
+ol.refs{margin:8px 0 0;padding-left:20px;display:grid;gap:8px;font-size:14px}
 ol.refs a{color:var(--accent)}
 .res-card{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--surface-2)}
 .res-card .rc-what{margin:0;font-size:14px;color:var(--muted)}
@@ -173,7 +179,7 @@ ol.refs a{color:var(--accent)}
 .res-card{border-left:6px solid var(--line)}
 .res-card .rc-row>.status{font-size:16px;padding:7px 15px 7px 11px;gap:8px}
 .res-card .rc-row>.status i{width:20px;height:20px;border-radius:50%;background:currentColor;position:relative;flex:none}
-.res-card .rc-row>.status i::after{position:absolute;inset:0;display:grid;place-items:center;font-style:normal;font-weight:700;font-size:13px;line-height:1;color:var(--surface)}
+.res-card .rc-row>.status i::after{position:absolute;inset:0;display:grid;place-items:center;font-style:normal;font-weight:700;font-size:14px;line-height:1;color:var(--surface)}
 .res-card .rc-row>.status.ok i::after{content:"\2713"}
 .res-card .rc-row>.status:is(.low,.high,.crit) i::after{content:"!"}
 .res-card:has(.rc-row>.status.ok){border-left-color:var(--accent)}
@@ -191,14 +197,14 @@ ol.refs a{color:var(--accent)}
 .res-card:has(.rc-row>.status.high) .rc-big{color:var(--high)}
 .res-card:has(.rc-row>.status.crit) .rc-big{color:var(--crit)}
 .chart-title{margin:16px 0 0;font-size:14px}
-.few{color:var(--low);font-size:12.5px;font-weight:600}
-.notes{margin:8px 0 0;padding-left:18px;display:grid;gap:6px;font-size:13.5px}
-.formula{font-family:var(--font-mono);font-size:12.5px;background:var(--surface-2);border-radius:6px;padding:8px 10px;overflow-x:auto;white-space:nowrap}
+.few{color:var(--low);font-size:14px;font-weight:600}
+.notes{margin:8px 0 0;padding-left:18px;display:grid;gap:6px;font-size:14px}
+.formula{font-family:var(--font-mono);font-size:14px;background:var(--surface-2);border-radius:6px;padding:8px 10px;overflow-x:auto;white-space:nowrap}
 
 
 /* Module navigation and dating module */
 .mods{display:flex;gap:6px;overflow-x:auto;padding-block:0 10px;scrollbar-width:thin}
-.mods a{flex:none;font-size:13.5px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--fg);text-decoration:none}
+.mods a{flex:none;font-size:14px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--fg);text-decoration:none}
 .mods a:hover,.mods a:focus-visible{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
 section.module{scroll-margin-top:170px}
 section.module + section.module{margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
@@ -220,7 +226,7 @@ table.bm-table td{vertical-align:middle}
 table.bm-table tbody tr{cursor:pointer}
 table.bm-table tbody tr.sel td{background:var(--surface-2)}
 table.bm-table td b{font-family:var(--font-mono);font-weight:500;color:var(--fg)}
-.status.sm{font-size:12px;padding:2px 9px;font-weight:600;white-space:nowrap}
+.status.sm{font-size:14px;padding:2px 9px;font-weight:600;white-space:nowrap}
 .bw-out{display:flex;flex-direction:column;gap:10px}
 .bw-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px}
 .bw-row .status{font-size:16px;padding:6px 14px}
@@ -234,8 +240,8 @@ table.bm-table td b{font-family:var(--font-mono);font-weight:500;color:var(--fg)
 .kd-head,.kd-row{display:grid;grid-template-columns:minmax(0,1fr) 74px 74px;gap:8px;align-items:center}
 .kd-row.one{grid-template-columns:minmax(0,1fr) 156px}
 .kd-head{margin-top:8px}
-.kd-head span{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:center}
-.kd-sub{margin:12px 0 0;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);font-weight:700}
+.kd-head span{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:center}
+.kd-sub{margin:12px 0 0;font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);font-weight:700}
 .kd-m{padding:8px 0;border-bottom:1px solid var(--line)}
 .kd-lab{display:flex;align-items:center;gap:6px;font-size:14px;line-height:1.25;min-width:0}
 .kd-lab .unit{white-space:nowrap}
@@ -243,9 +249,9 @@ table.bm-table td b{font-family:var(--font-mono);font-weight:500;color:var(--fg)
 .kd-row input:disabled{background:var(--surface-2);color:var(--fg);opacity:1}
 .kd-i{flex:none;width:20px;height:20px;border-radius:50%;border:1px solid var(--accent);background:none;color:var(--accent);font:700 12px/1 var(--font-body);font-style:italic;cursor:pointer;padding:0}
 .kd-i[aria-expanded="true"]{background:var(--accent);color:var(--accent-fg)}
-.tw-hw{margin:2px 0 8px}.tw-hw .kd-one{margin-top:0}.tw-hw[hidden]{display:none}.kd-one{margin:4px 0 0;font-size:12.5px;line-height:1.4;color:var(--muted)}
+.tw-hw{margin:2px 0 8px}.tw-hw .kd-one{margin-top:0}.tw-hw[hidden]{display:none}.kd-one{margin:4px 0 0;font-size:14px;line-height:1.4;color:var(--muted)}
 .kd-how{margin-top:8px;padding:10px;border-radius:8px;background:var(--surface-2)}
-.kd-steps{margin:8px 0 0;padding-left:18px;font-size:13px;line-height:1.45}
+.kd-steps{margin:8px 0 0;padding-left:18px;font-size:14px;line-height:1.45}
 .kd-steps li{margin:3px 0}
 .kd-fig{width:100%;height:auto;display:block;background:var(--surface);border-radius:6px}
 .kd-fig .o{fill:var(--surface-2);stroke:var(--fg);stroke-width:1.6}
@@ -259,38 +265,38 @@ table.bm-table td b{font-family:var(--font-mono);font-weight:500;color:var(--fg)
 .kd-fig text{fill:var(--fg);font:12px var(--font-body)}
 .kd-fig text.m{fill:var(--muted);font-size:11px}
 .kd-fig text.b{font-weight:700}
-.kd-chk{display:grid;grid-template-columns:minmax(0,1fr) 74px 74px;gap:8px;align-items:center;font-size:13.5px;line-height:1.3}
+.kd-chk{display:grid;grid-template-columns:minmax(0,1fr) 74px 74px;gap:8px;align-items:center;font-size:14px;line-height:1.3}
 .kd-chk input{justify-self:center;margin:0}
 table.kd-tab{min-width:0}
 table.kd-tab th,table.kd-tab td{text-align:left;vertical-align:top}
 table.kd-tab td{font-family:var(--font-body)}
 table.kd-tab td b{font-family:var(--font-mono);font-weight:500}
-table.kd-tab .kr{display:block;font-size:12.5px;line-height:1.35;color:var(--muted);margin-top:3px}
+table.kd-tab .kr{display:block;font-size:14px;line-height:1.35;color:var(--muted);margin-top:3px}
 table.kd-tab .kr.kv{font-family:var(--font-mono);color:var(--fg)}
 #gu-ktab td:first-child{min-width:104px}
-table.kd-tab .status.sm{font-size:11.5px;padding:2px 8px;gap:6px}
-@media (max-width:520px){table.kd-tab th,table.kd-tab td{padding:6px 4px}#gu-ktab td:first-child{min-width:84px}table.kd-tab .kr{font-size:12px}table.kd-tab .status.sm{white-space:normal}}
+table.kd-tab .status.sm{font-size:14px;padding:2px 8px;gap:6px}
+@media (max-width:520px){table.kd-tab th,table.kd-tab td{padding:6px 4px}#gu-ktab td:first-child{min-width:84px}table.kd-tab .kr{font-size:14px}table.kd-tab .status.sm{white-space:normal}}
 .cns-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:8px}
 .cns-fields .field{justify-content:flex-end}
 .cns-fields .field input{width:100%}
 @media (max-width:420px){.cns-fields{grid-template-columns:repeat(2,minmax(0,1fr))}}
 table.sm-mk{min-width:760px}
-table.sm-mk th,table.sm-mk td{text-align:left;vertical-align:top;font-family:var(--font-body);font-size:13px;line-height:1.35}
+table.sm-mk th,table.sm-mk td{text-align:left;vertical-align:top;font-family:var(--font-body);font-size:14px;line-height:1.35}
 table.sm-mk td:nth-child(3){font-family:var(--font-mono);white-space:nowrap}
 #sm-lr-tab td:nth-child(2){text-align:left}
 .tw-in{display:flex;flex-direction:column;gap:6px}
 .tw-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,104px) minmax(0,104px);gap:8px;align-items:center}
 .tw-row[hidden]{display:none}
-.tw-row label{font-size:13.5px;line-height:1.25}
+.tw-row label{font-size:14px;line-height:1.25}
 .tw-row input[type=number]{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:6px 8px;min-width:0}
-.tw-row select{width:100%;padding:6px 4px;font-size:13px}
-.tw-head span{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.tw-row select{width:100%;padding:6px 4px;font-size:14px}
+.tw-head span{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
 .tw-chk{display:flex;justify-content:center}
 .tw-ga{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px}
 .tw-more{margin-top:12px}
 .tw-out{margin-top:10px}
 table.tw-crit{min-width:560px}
-table.tw-crit th,table.tw-crit td{text-align:left;vertical-align:top;font-family:var(--font-body);font-size:13px;line-height:1.35}
+table.tw-crit th,table.tw-crit td{text-align:left;vertical-align:top;font-family:var(--font-body);font-size:14px;line-height:1.35}
 
 /* Home screen: tiles; one module per view; compact header on phones */
 .brand{color:inherit;text-decoration:none}
@@ -300,15 +306,15 @@ table.tw-crit th,table.tw-crit td{text-align:left;vertical-align:top;font-family
 .home-h{font-size:26px;margin:0 0 12px}
 .home .search{margin:0;max-width:none}
 .home .search input{padding:12px 14px 12px 38px;font-size:16px}
-.home-note{color:var(--muted);font-size:13.5px;margin:8px 0 6px}
-.grp{font-family:var(--font-display);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 8px}
+.home-note{color:var(--muted);font-size:14px;margin:8px 0 6px}
+.grp{font-family:var(--font-display);font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 8px}
 .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
 .tile{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--fg);text-decoration:none;min-height:78px}
 .tile:hover,.tile:focus-visible{border-color:var(--accent);background:var(--accent-soft)}
 .tile svg{flex:none;width:28px;height:28px;fill:none;stroke:var(--accent);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .tile b{display:block;font-family:var(--font-display);font-size:18px;font-weight:600;line-height:1.15}
-.tile small{display:block;color:var(--muted);font-size:12.5px;margin-top:3px;line-height:1.3}
-.tile .tag{display:inline-block;margin-top:7px;font-style:normal;font-size:11px;padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.tile small{display:block;color:var(--muted);font-size:14px;margin-top:3px;line-height:1.3}
+.tile .tag{display:inline-block;margin-top:7px;font-style:normal;font-size:14px;padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
 .tile:hover .tag{background:var(--surface)}
 .wd input{-moz-appearance:textfield;appearance:textfield}
 .wd input::-webkit-inner-spin-button,.wd input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
@@ -336,10 +342,10 @@ body:not([data-view="mod"]) .mod-pn{display:none}
   .brand svg{width:22px;height:22px}
   .brand h1{font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .brand p{display:none}
-  .home-btn{padding:5px 10px;font-size:13px;flex:none}
+  .home-btn{padding:5px 10px;font-size:14px;flex:none}
   .dating{padding-block:6px 8px;gap:6px 8px;align-items:center}
   .dating .field>.lbl,.dating #f-ga>label{display:none}
-  .dating .seg button{padding:6px 9px;font-size:12.5px}
+  .dating .seg button{padding:6px 9px;font-size:14px}
   .wd input{width:56px!important;padding:6px 8px!important}
   .ga-readout{padding:4px 10px}
   .ga-readout span{display:none}
@@ -363,10 +369,12 @@ input.fus-copied{background:var(--accent-soft)}
 .copyall-wrap+.home-btn{margin-left:0}
 .copyall-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1px solid var(--line);color:var(--fg);background:var(--surface);font-size:14px;cursor:pointer;white-space:nowrap}
 .copyall-btn:hover,.copyall-btn:focus-visible{border-color:var(--accent);color:var(--accent)}
-@media (max-width:600px){.copyall-btn{padding:5px 8px}.copyall-btn span{display:none}.copyall-wrap .hint{font-size:12px}}
-footer{color:var(--muted);font-size:12px;padding-block:0 32px}
+@media (max-width:600px){.copyall-btn{padding:5px 8px}.copyall-btn span{display:none}.copyall-wrap .hint{font-size:14px}}
+footer{color:var(--muted);font-size:14px;padding-block:0 32px}
 @media (prefers-reduced-motion:no-preference){.pt{transition:transform .25s ease}}
 </style>
+</head>
+<body>
 
 <header class="top">
   <div class="wrap">
@@ -391,7 +399,7 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
       </div>
       <div class="field" id="f-ga">
         <label for="ga-w">Gestational age</label>
-        <div class="wd"><input id="ga-w" type="number" inputmode="numeric" min="10" max="41" step="1" placeholder="WW" aria-label="Gestational age, weeks"><span>+</span><input id="ga-d" type="number" inputmode="numeric" min="0" max="6" step="1" placeholder="DD" aria-label="Gestational age, days"></div>
+        <div class="wd"><input id="ga-w" type="number" inputmode="numeric" min="0" max="44" step="1" placeholder="WW" aria-label="Gestational age, weeks"><span>+</span><input id="ga-d" type="number" inputmode="numeric" min="0" max="6" step="1" placeholder="DD" aria-label="Gestational age, days"></div>
       </div>
       <div class="field" id="f-edd" hidden>
         <label for="edd">EDD</label>
@@ -456,7 +464,7 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
     <div class="module-head">
       <div>
         <h2 id="dating-h">Dating</h2>
-        <p>Due date and gestational age from the crown-rump length, fetal biometry, the IVF transfer date or the binocular distance, and a due date calculator. Choose the one you need.</p>
+        <p>Due date from the crown-rump length, biometry, IVF transfer date or binocular distance.</p>
       </div>
     </div>
     <div class="subnav" role="tablist" aria-label="Dating calculators" id="dt-tabs">
@@ -551,8 +559,8 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
           <div class="stack">
             <div class="field"><label for="bd-in">BD <span class="unit">mm</span></label><input id="bd-in" type="number" inputmode="decimal" step="1" min="0"></div>
             <div class="res-card" id="bd-card" aria-live="polite">
-              <div id="bd-ans" hidden><p class="rc-what" id="bd-what"></p><p class="rc-big" id="bd-ga">&mdash;</p></div>
-              <p class="hint" id="bd-range" style="font-size:13.5px;color:var(--fg)">Enter the BD, 15 to 65 mm.</p>
+              <div id="bd-ans" hidden><p class="rc-verdict" id="bd-verdict" hidden></p><p class="rc-what" id="bd-what"></p><p class="rc-big" id="bd-ga">&mdash;</p></div>
+              <p class="hint" id="bd-range" style="font-size:14px;color:var(--fg)">Enter the BD, 15 to 65 mm.</p>
             </div>
             <p class="hint">From the BPD plane, slide toward the face until both orbits look the same size and each is at its widest; calipers on the outer margin of each eye (orbit), outer to outer (Jeanty 1984, Methods, p. 241; Figure 1, p. 242). <a href="https://doi.org/10.7863/jum.1984.3.6.241" target="_blank" rel="noopener">Article</a></p>
           </div>
@@ -656,7 +664,7 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
     <div class="module-head">
       <div>
         <h2 id="bio-h">Fetal biometry</h2>
-        <p>Centiles for BPD, HC, AC, FL and OFD at the gestational age in the bar above. Enter the full set, or choose one measurement. Tap <b>i</b> beside a measurement for how to take it.</p>
+        <p>Centiles for BPD, HC, AC, FL and OFD.</p>
       </div>
       <div class="nomo">
         <span class="lbl">Chart</span>
@@ -749,7 +757,7 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
     <div class="module-head">
       <div>
         <h2 id="efw-h">Estimated fetal weight</h2>
-        <p>Centile for gestational age on an in utero ultrasound standard. Choose how the weight is obtained: from biometry with a Hadlock 1985 formula, from the abdominal wall defect formula, or an EFW already calculated.</p>
+        <p>EFW centile, from biometry, the abdominal wall defect formula or an EFW already calculated.</p>
       </div>
     </div>
     <div class="subnav" role="tablist" aria-label="EFW input" id="efw-pick">
@@ -880,19 +888,19 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
       .scan-add{margin-top:10px}
       .fgr-prev input{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:6px 6px;min-width:0;-moz-appearance:textfield;appearance:textfield}
       .fgr-prev input::-webkit-outer-spin-button,.fgr-prev input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-      .fgr-prev .h{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-      .fgr-prev .n{font-size:13.5px;text-align:center;color:var(--muted)}
+      .fgr-prev .h{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+      .fgr-prev .n{font-size:14px;text-align:center;color:var(--muted)}
       table.fgr-crit{min-width:0}
-      table.fgr-crit th,table.fgr-crit td{text-align:left;vertical-align:top;font-family:var(--font-body);font-size:13px;line-height:1.35}
+      table.fgr-crit th,table.fgr-crit td{text-align:left;vertical-align:top;font-family:var(--font-body);font-size:14px;line-height:1.35}
       table.fgr-crit td:first-child{min-width:150px}
-      table.fgr-crit tr.grp td{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);font-weight:700;padding-top:10px}
+      table.fgr-crit tr.grp td{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);font-weight:700;padding-top:10px}
       #fgr-edf{width:100%}
-      table.fgr-crit .kr{display:block;font-size:12.5px;line-height:1.35;color:var(--muted);margin-top:3px}
+      table.fgr-crit .kr{display:block;font-size:14px;line-height:1.35;color:var(--muted);margin-top:3px}
     </style>
     <div class="module-head">
       <div>
         <h2 id="fgr-h">Growth restriction check</h2>
-        <p>Fetal growth restriction, early (before 32+0 weeks) or late (32+0 weeks and after), by the Delphi consensus criteria (Gordijn 2016) as adopted by SOGC Guideline No. 442, and small for gestational age by SOGC 442. Values typed here also fill Biometry, Estimated fetal weight and Doppler, and values typed there show here.</p>
+        <p>Early and late FGR by the Delphi consensus (Gordijn 2016) and SOGC Guideline No. 442.</p>
       </div>
     </div>
 
@@ -1052,11 +1060,11 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
     </div>
   </section>
   <section id="doppler" class="module" aria-labelledby="dop-h">
-    <style>@media (max-width:520px){#doppler .nomo .seg{flex-wrap:wrap}#doppler .nomo .seg button{white-space:nowrap;flex:1 1 auto}}#doppler .calc-off{display:none!important}@media (max-width:520px){#doppler svg.chart{min-width:0}#doppler table.lines{min-width:0}#doppler table.lines th,#doppler table.lines td{padding:6px 5px}}#doppler .tbl-wrap.ovf{background:linear-gradient(to left,var(--surface) 30%,transparent) right center/36px 100% no-repeat local,linear-gradient(to left,var(--line),transparent) right center/14px 100% no-repeat scroll}#doppler .tbl-wrap.ovf::before{content:"Scroll sideways for more columns \203A";display:block;font-size:12px;color:var(--muted);margin:0 0 4px}</style>
+    <style>@media (max-width:520px){#doppler .nomo .seg{flex-wrap:wrap}#doppler .nomo .seg button{white-space:nowrap;flex:1 1 auto}}#doppler .calc-off{display:none!important}@media (max-width:520px){#doppler svg.chart{min-width:0}#doppler table.lines{min-width:0}#doppler table.lines th,#doppler table.lines td{padding:6px 5px}}#doppler .tbl-wrap.ovf{background:linear-gradient(to left,var(--surface) 30%,transparent) right center/36px 100% no-repeat local,linear-gradient(to left,var(--line),transparent) right center/14px 100% no-repeat scroll}#doppler .tbl-wrap.ovf::before{content:"Scroll sideways for more columns \203A";display:block;font-size:14px;color:var(--muted);margin:0 0 4px}</style>
     <div class="module-head">
       <div>
         <h2 id="dop-h">Doppler</h2>
-        <p>Umbilical artery PI, RI and S/D, middle cerebral artery, CPR, uterine artery and MCA peak systolic velocity at the gestational age in the bar above, with a serial check of the umbilical artery against a previous scan.</p>
+        <p>Umbilical artery, middle cerebral artery, CPR, uterine artery and MCA peak systolic velocity.</p>
       </div>
     </div>
     <div class="subnav" role="tablist" aria-label="Doppler measurement" id="dp-tabs">
@@ -1193,7 +1201,7 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
     <div class="module-head">
       <div>
         <h2 id="af-h">Amniotic fluid</h2>
-        <p>Three ways to measure amniotic fluid. Choose the one you measured; each has its own chart.</p>
+        <p>Amniotic fluid by deepest pocket, AFI or 2-diameter pocket.</p>
       </div>
     </div>
     <div class="subnav keep" role="tablist" aria-label="Amniotic fluid measurement" id="af-pick">
@@ -1282,7 +1290,7 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
     <style>
       #cns .res-card{margin-bottom:12px}
       #cns .res-card .rc-row .hint{margin:0}
-      #cns .res-card .rc-sub{margin:-6px 0 4px;font-size:13px;color:var(--muted)}
+      #cns .res-card .rc-sub{margin:-6px 0 4px;font-size:14px;color:var(--muted)}
       #cns .res-card .rc-rg .derived::before{content:" ("}
       #cns .res-card .rc-rg .derived::after{content:")"}
       #cns #cns-also{margin-top:0}
@@ -1292,7 +1300,7 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
     <div class="module-head">
       <div>
         <h2 id="cns-h">Central nervous system</h2>
-        <p>Ventricles, midline, posterior fossa, corpus callosum, optic nerve and cortex at the gestational age in the bar above. Choose a section; each measurement has its own chart.</p>
+        <p>Ventricles, midline, posterior fossa, corpus callosum, optic nerve and cortex.</p>
       </div>
     </div>
     <div class="subnav" role="tablist" aria-label="CNS sections">
@@ -1372,7 +1380,7 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
     <div class="module-head">
       <div>
         <h2 id="face-h">Face</h2>
-        <p>Orbits, lenses, interlens distance, mandible and facial profile at the gestational age in the bar above.</p>
+        <p>Orbits, lenses, interlens distance, mandible and facial profile.</p>
       </div>
     </div>
     <div class="subnav" role="tablist" aria-label="Face sections">
@@ -1443,12 +1451,12 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
       @media (min-width:640px) and (max-width:860px){#heart .grid{grid-template-columns:minmax(0,260px) minmax(0,1fr);grid-template-areas:"in res" "how res";grid-template-rows:auto 1fr}}
       #heart .ht-pickrow.calc-on{display:none}
       #heart details.cns-grp.calc-off,#heart [data-lc].calc-off{display:none!important}
-      @media (max-width:520px){#heart #ht-table{min-width:0}#heart #ht-table th,#heart #ht-table td{padding:7px 4px}#heart #ht-table th{letter-spacing:0;font-size:11px}#heart #ht-table .status{width:auto;text-align:left;font-size:12px;padding:3px 8px;gap:5px}#heart #ht-table th:nth-child(n+5),#heart #ht-table td:nth-child(n+5){display:none}}
+      @media (max-width:520px){#heart #ht-table{min-width:0}#heart #ht-table th,#heart #ht-table td{padding:7px 4px}#heart #ht-table th{letter-spacing:0;font-size:14px}#heart #ht-table .status{width:auto;text-align:left;font-size:14px;padding:3px 8px;gap:5px}#heart #ht-table th:nth-child(n+5),#heart #ht-table td:nth-child(n+5){display:none}}
     </style>
     <div class="module-head">
       <div>
         <h2 id="ht-h">Heart and chest</h2>
-        <p>Cardiac size and shape, three-vessel view and thymus at the gestational age in the bar above, and lung volume for pulmonary hypoplasia. Choose a section; each shows only its own measurements and chart.</p>
+        <p>Cardiac size and shape, three-vessel view, thymus and lung volume.</p>
       </div>
     </div>
     <div class="subnav" role="tablist" aria-label="Heart and chest sections">
@@ -1559,7 +1567,7 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
     <div class="module-head">
       <div>
         <h2 id="ab-h">Abdomen</h2>
-        <p>Pancreas, bowel, stomach, liver and spleen at the gestational age in the bar above. Choose a section; the chart follows the measurement you enter.</p>
+        <p>Pancreas, bowel, stomach, liver and spleen.</p>
       </div>
     </div>
     <div class="subnav" role="tablist" aria-label="Abdomen sections">
@@ -1640,7 +1648,7 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
     <div class="module-head">
       <div>
         <h2 id="gu-h">Kidneys, bladder and genitalia</h2>
-        <p>Right and left kidney, adrenal gland and renal pelvis, bladder and penile length at the gestational age in the bar above. Tap <b>i</b> beside a measurement for how to take it.</p>
+        <p>Kidneys, adrenal glands, renal pelvis, bladder and penile length.</p>
       </div>
     </div>
     <div class="subnav" role="tablist" aria-label="Kidneys, bladder and genitalia sections">
@@ -1746,7 +1754,7 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
     <div class="module-head">
       <div>
         <h2 id="lb-h">Limbs</h2>
-        <p>Long bones, foot, femur ratios and femoral angle at the gestational age in the bar above. Choose a tab; each shows its own measurements and chart.</p>
+        <p>Long bones, foot, femur ratios and femoral angle.</p>
       </div>
     </div>
     <div class="subnav" role="tablist" aria-label="Limbs sections">
@@ -1824,7 +1832,7 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
     <div class="module-head">
       <div>
         <h2 id="sm-h">Soft markers</h2>
-        <p>Second-trimester soft markers, a likelihood-ratio calculator for trisomy 21, nasal bone and profile markers, and first-trimester facial angles. Choose a tab; each shows its own measurements and chart.</p>
+        <p>Soft markers, trisomy 21 likelihood ratios, nasal bone, profile and facial angles.</p>
       </div>
     </div>
     <div class="subnav" role="tablist" aria-label="Soft markers sections">
@@ -1953,12 +1961,12 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
       #twins .res-card .rc-row .tw-t{min-width:58px;color:var(--muted);font-size:14px}
       #twins .res-card .rc-row b{font-family:var(--font-mono);font-weight:500}
       #twins .res-card .tw-nw{white-space:nowrap}
-      #twins .tw-row select{padding:6px 2px;font-size:12px}
+      #twins .tw-row select{padding:6px 2px;font-size:14px}
     </style>
     <div class="module-head">
       <div>
         <h2 id="tw-h">Twins</h2>
-        <p>Growth, discordance, selective FGR, TTTS and TAPS for both twins at the gestational age in the bar above. Choose a section; each shows only the measurements it needs.</p>
+        <p>Growth, discordance, selective FGR, TTTS and TAPS for both twins.</p>
       </div>
     </div>
     <div class="subnav" role="tablist" aria-label="Twins sections">
@@ -2104,7 +2112,7 @@ footer{color:var(--muted);font-size:12px;padding-block:0 32px}
     </div>
   </section>
 </main>
-<footer class="wrap">Calipr, version 60, October 2026. For health professionals. Results support, and do not replace, clinical judgement. Source links open each paper on the publisher&rsquo;s website.</footer>
+<footer class="wrap">Calipr, version 61, 21 November 2026. For health professionals. Results support, and do not replace, clinical judgement. Source links open each paper on the publisher&rsquo;s website.</footer>
 
 <script>window.__PUB={"1-J2sNfFe3tSAPrv7N4kmxVYkLRhFM588": "https://doi.org/10.1002/pd.693", "1-WHL5RJRvv6cwFXjnetfkMIRcEFHPxQi": "https://doi.org/10.1002/uog.11169", "1-f2g_kPMhJD_Z-UXFTt6aya1OwvzEn9Y": "https://doi.org/10.1016/j.jogc.2019.04.010", "11Afs7TP6JXNCY1VXdyPsgi6O98gmFGuU": "https://doi.org/10.1002/uog.41", "11AvlSlzgPJJiimeCgOAr-UXdLsrjqb2w": "https://doi.org/10.7863/jum.1985.4.12.667", "12JIaNDK9gGrkiKUOBznfGzsKjx1-o67z": "https://doi.org/10.1002/uog.23616", "12ifrxiZp1MUZMzo0CoVbP1Bpe3w9LArK": "https://doi.org/10.1002/uog.12364", "13Jg_LJoVGAkDBuw4YIz6NLUpUFufpC4C": "https://doi.org/10.1002/pd.827", "13Ug6s3IuCbNTx3cIt5rdGT-vxGegZtGq": "https://doi.org/10.1016/0002-9378(93)90487-4", "13xm1gZW2qQh5LEw080yJUcxyQlGmAFYS": "https://doi.org/10.1542/peds.108.2.e35", "14CXf-jwo8PC5P3ZsUF_1ETb9xBhrJNJY": "https://doi.org/10.7863/jum.1991.10.4.211", "14QPMjidhrXlFxo3NxYrBKV0sdIsWXu7l": "https://doi.org/10.1002/uog.11120", "15LnO2vTy1-rW6jtySYjMqpceJv3PSe-D": "https://doi.org/10.1002/pd.2632", "15jxdYAglPMR_upowggaysQ1MXRe76zM-": "https://doi.org/10.1016/j.ajog.2018.04.039", "15xA09_V1vuKLGH9OGWP0BCMETmxuf_DX": "https://doi.org/10.1002/uog.13228", "164PfLLGoNe3Nnrp7rYQW4mR2HFxUWu0z": "https://doi.org/10.1002/jcu.20537", "16CT1eiJUH-JkOesBeMvPdnKfXNw71TUo": "https://doi.org/10.1002/uog.5315", "16GnAOX7Rv7zFJcN41s2dLSqq4oAbVw5l": "https://doi.org/10.1046/j.1469-0705.1998.12060419.x", "16SWgE0iSGalfZ4vFbpN4Q42xlVUMTC34": "https://doi.org/10.1002/uog.7705", "16dFHsBhgca6D5bXntYImy1fyVHYqFDmA": "https://doi.org/10.7863/jum.1984.3.6.241", "17IB3oUshB-HCxd0jeXimK8IP-o36i4eB": "https://doi.org/10.1002/uog.9047", "17z32KYWYNfH8WeK52C_dkAG_Vd-ApZrA": "https://doi.org/10.1002/uog.15821", "18OXJ61YTjY0mL345_9ot2MRJriSpr_F0": "https://doi.org/10.1002/uog.2757", "18furnSEPI9Bdf5pdNnwQ5t0QHGmlDGI-": "https://doi.org/10.1002/uog.17409", "18o-nuhCYPNqY92N45dacZ7jqA-lTichM": "https://doi.org/10.1111/j.1471-0528.2002.01022.x", "197z03NIkL8Cdy_VvPi0lQP4UrHkuEVl5": "https://doi.org/10.1002/jum.14786", "19RjOZ1fUKAbaTLQicjas0_b2kHvTwmMv": "https://doi.org/10.1046/j.0960-7692.2001.00622.x", "1A8NOpySNEZyI8p_LrDDXECaq_fYHYoX8": "https://doi.org/10.1002/pd.4649", "1BVshoGKOHVYZT2zofgRR3fy1VVqAT3BA": "https://doi.org/10.1002/pd.2280", "1CG2hmjORSyvKcsrnoDLnwVVExzA5AcQv": "https://doi.org/10.7863/ultra.33.6.1065", "1CRNnOyqMKGz5vyUZbVywwbFCYZfU8FKI": "https://doi.org/10.1016/j.ajog.2019.08.049", "1CYfF2WcHIT5cxgBBWz62lQy_ppWdz6LH": "https://doi.org/10.1046/j.1469-0705.2002.00695.x", "1Cbys773oGrkQlmS-HcnE00ND-0vuDx98": "https://doi.org/10.1002/jcu.22084", "1E6PbX3MnepQoJ4bx3kaewyXgTOBODOBs": "https://doi.org/10.1002/jum.16190", "1E7OpKSVOQaCKzuDXZMg47NsiJZAPT7g5": "https://doi.org/10.7863/ultra.34.5.853", "1ElfBjDbYzK7CXpIMPFphzwZOGsE1d3-Q": "https://doi.org/10.1002/uog.13308", "1FAPkTHEj1IjGmglYwlqJexIrWKoRon3z": "https://doi.org/10.1111/j.1471-0528.1975.tb00710.x", "1FUzdfjwA3LI1346nsjTzj9laGtreXtEn": "https://doi.org/10.1002/uog.13391", "1FdWQEyMqoh3oYicfal4IEeW6T4m-mXNj": "https://doi.org/10.1016/j.jogc.2022.05.002", "1Fi-rUvZQ-GfIsTsdDc_JYzOK_Qxitbvi": "https://doi.org/10.1002/uog.20157", "1GG-bozAFVlEM87oMgFlxi6lIoAb6Jt2N": "https://doi.org/10.1046/j.1469-0705.1991.01010012.x", "1HePE-ohEJlwV_rKbwwEqEGoKvq8MUEac": "https://doi.org/10.1002/uog.2606", "1Hi5lSXksRIWy7Vnuew2mrFj5ycvR7p91": "https://doi.org/10.1002/pd.4442", "1JMcFBGcrExQdw-q8gG1gjwjw2c1b6pkR": "https://doi.org/10.1002/uog.22145", "1JqJH7v8j4q1JZtPEsBf9xrxQEQbedZxs": "https://doi.org/10.1016/j.ajog.2004.09.019", "1KAfrrq-GXF5M2K-hdhAOxGGSmjLua8f0": "https://doi.org/10.1148/radiology.203.3.9169682", "1KI9Go3yv92AKyOaKtQdtEw5taFi_9PHn": "https://pubmed.ncbi.nlm.nih.gov/3292975/", "1KS45tU9ra8yn7Ykq1DaRqoIw4dIOAOmu": "https://doi.org/10.1148/radiology.181.1.1887021", "1Klp_jXnaWcxn2L8lQ4tVwAajxqkWVmuo": "https://doi.org/10.1002/jum.16470", "1L4swjj63U09Lso2K6-YqIj-lBtgd538U": "https://doi.org/10.1016/S0140-6736(14)61490-2", "1LY7Jw2pYeuBN26_i-pbE7MVbd59qy6KG": "https://doi.org/10.1002/uog.27514", "1MfqAzWXAojKVzdhFyvRLJF1URTOVkeXk": "https://doi.org/10.1002/uog.23647", "1NAzEKypQiLNfB8v_oHRrhJtfTYvecHeq": "https://doi.org/10.1002/uog.5294", "1NIjXT5ttagoxwSt9IysIoPhvGxjH8QXU": "https://doi.org/10.1002/uog.19034", "1OBZyOS0kXNccO29LFA3pL9KquxDvluYl": "https://doi.org/10.1016/j.ajog.2021.06.079", "1P22k53cGYevUQCySnua3zjFj3Ngynnhg": "https://doi.org/10.1055/s-2007-999987", "1P51hN2T5vjdyTESTJ0i-4AnNVjVrSyQw": "https://doi.org/10.1016/j.ajog.2006.10.891", "1PPI9D2PsRenjFmOqJp4hgSxzs7U4gLoe": "https://doi.org/10.1016/j.ajog.2016.12.176", "1Pf_0pnRXZtFqOyLHUSmHERRXLCXtZbfl": "https://doi.org/10.1097/AOG.0000000000004084", "1QmZDXfcinbDTxAGfVXblISZ5Qf3b2ynf": "https://doi.org/10.1016/S0140-6736(14)61490-2", "1RJEtSI0MkFYn4pGZ40zn5wcHDaT4PoOe": "https://doi.org/10.1002/uog.4088", "1RT2I2bFKRGYPrAVF-UsPEr9LYhc0cH4Y": "https://doi.org/10.1080/14767058.2018.1498837", "1RTvBnb59egejeZQ2f_hyQ9sVTvBy-pUk": "https://doi.org/10.1067/mob.2000.107325", "1R_JR0Z49PsWXvpMO9F2cysKaUWgOyu-n": "https://doi.org/10.1002/pd.3904", "1ReJVQyA_GSj6ksK-5Lm354Ph5_Br4zwh": "https://doi.org/10.3349/ymj.1998.39.3.222", "1RwxxdwZ1ZPs2C-EOIjyLs3Ij7CzeuiOl": "https://doi.org/10.1055/a-0594-2053", "1T2iXKe9ilwK8uQolXfR9kGAUA02GNGek": "https://pubmed.ncbi.nlm.nih.gov/15909464/", "1UaWa9ck3bAePHUqA__FG_jYxJ57AIyjy": "https://doi.org/10.1046/j.1469-0705.2001.00216.x", "1Vn--OD3J9fjfnQEk2S4xBGbisgxWjjNB": "https://doi.org/10.7863/jum.2002.21.12.1387", "1WUPZM_3agHwhMvSAHZpBx6D3DO2pnYah": "https://doi.org/10.1002/uog.5188", "1Wp6lH1KaO4F6YG0LDYaKcFSR4jjHGyLE": "https://doi.org/10.1097/GIM.0b013e3181971ccb", "1WtVcn00AIJDcdHKo2_7FPNCfpeWWYhvJ": "https://doi.org/10.1016/j.ajog.2007.08.031", "1XBgMGljqWm347ItzqpXwCLeX3Xiimnv4": "https://doi.org/10.1002/uog.8853", "1X__tPu86EqOkDJPP3BHqscphiLKHY5Q3": "https://doi.org/10.3389/fgene.2023.1170720", "1Z-U9GKnfd3blxYjr8HOLbbzoYB55UINi": "https://doi.org/10.1080/02841850510021715", "1ZwKCK1m-Dqru1GcKnmLcEXnL56I-oFJF": "https://doi.org/10.7863/jum.2012.31.2.205", "1_AiJZCKXvCFw4T1RC2YLhF6tfAvDLegg": "https://doi.org/10.1002/uog.31", "1aaZowH489UqeDN7oIBxzsTqqEF6zTLVo": "https://doi.org/10.1002/uog.4091", "1ar0OFzfEA14mq_YzdCcjo1Gda5AWTQJ7": "https://doi.org/10.1016/j.jpurol.2014.10.002", "1auTxediiPNKddcts0FxClTyguWXoyvVC": "https://doi.org/10.1002/uog.23127", "1avhg9p0uHXQIEK2HiPFq0Fj52g_2BJDa": "https://doi.org/10.1002/uog.19013", "1bGIS7Nys-087DWcjmuetxwQmUq5Dumyc": "https://doi.org/10.1002/uog.7531", "1bS_Cz2P_dsaSgThgsYnFfhu0BNMuIiJI": "https://doi.org/10.1002/uog.20172", "1bfJefFhofABTT3d3X74CocPXkOfNkJST": "https://doi.org/10.1016/j.jogc.2023.05.018", "1bifaMJNFVXOTa4mZZn65AUNhSuyHI2M7": "https://doi.org/10.1016/j.ajog.2020.10.039", "1bu90FVArCz2F9gJRFmxE-un9GMmRfAS4": "https://doi.org/10.1002/uog.12501", "1cEwnYOlz8Exkz2AiAEjpzLnwycdmzPI2": "https://doi.org/10.1002/uog.21882", "1cNwG4py70IVF3SyAZ9ulU_BG6GiQEHgp": "https://doi.org/10.1002/pd.5410", "1ckDwyUWk1-ddm89y-vLp-jbvFYo61fiS": "https://doi.org/10.1046/j.1469-0705.2000.00244.x", "1d4JwlFcIWYAUke8IVvaRaqjSqLU8QdGM": "https://doi.org/10.1016/j.ajog.2015.09.089", "1dnaxYOJ6tw8uS9FgJcMayonXmSF30UJ2": "https://doi.org/10.1016/j.ajogmf.2023.101072", "1eQvo3gUJHF3-d7xbKpBo9beMlrKLoglk": "https://doi.org/10.1002/pd.137", "1fMXr_WMlpVYUqt_QxfKbCopkHEwLs12z": "https://doi.org/10.1097/AOG.0000000000002046", "1fg1dVZigBbr-451RRX6ozJ9e0v3GvLQ8": "https://doi.org/10.1002/pd.1207", "1gB7fkiR15e8FMVN1YcJy5B4VnyVVsKUG": "https://doi.org/10.1002/uog.24888", "1gjJ-6BycoigEu7jefO3m9j9d6qr9xO8d": "https://doi.org/10.1002/uog.5135", "1hxEhLq6BjuXvrqK9Pepf_0cOpCqz793u": "https://doi.org/10.1016/j.jogc.2024.102694", "1hz3Mp481AqH_MbP7h6hjjzfHwoZt6Pf8": "https://doi.org/10.1002/pd.3834", "1i_HGZbiqEquJPNJkqqa5lxHPkLlb35X8": "https://doi.org/10.1002/jum.15086", "1iv54h5PGdZ2MWGhuHJU6RqYQEm9iCqjB": "https://doi.org/10.2214/ajr.138.4.649", "1k4xEavo0UWv3RGseCHYzhs5Dv21c558d": "https://doi.org/10.1007/s00247-023-05825-0", "1k5VRk6iJXHLTXXRrBtVtUkLC3oJR-csc": "https://doi.org/10.1002/uog.21870", "1kQNMT6zh62oa3YNXJJJOif-Uw5O0p9BX": "https://doi.org/10.7863/ultra.16.02019", "1knK4hKfIKw2RFzESnj781gAoiVLCXoAF": "https://doi.org/10.1002/uog.3853", "1krNEl4dQzjDgJUMpKlSkr3XaOPdIfZTm": "https://doi.org/10.1148/radiology.152.2.6739822", "1lwmc6AhpYxqhBxGRt6R7A3YhNFz4cAov": "https://doi.org/10.1097/01.AOG.0000148848.49752.37", "1lzxkhBfSryxQhkMwfdJCk5bn9XKH88c9": "https://doi.org/10.15557/JoU.2022.0026", "1m-6BaI5qbCEhUOvTFuaiEHkYgwwDEAj0": "https://doi.org/10.1002/jum.14233", "1m6TVd0YnDcng6PXVE_I-yRoAix9GHH11": "https://doi.org/10.1002/uog.7768", "1mH53cmdLzBqzmR2gmKNTbiM0vmTKGH_7": "https://doi.org/10.1002/uog.6436", "1mhRBqlOeocgghC5nVVZeyZOpvdZ3uzgz": "https://doi.org/10.1016/j.jogc.2023.05.022", "1oNnRC-ORTjGqWDNj12Zt3y5ICjJTTUTo": "https://doi.org/10.1080/01443615.2022.2114323", "1q6eUeqvu_vmqEPBq1CR2DuktH-DRxS8I": "https://doi.org/10.1002/uog.13339", "1qFVA5Mi-Kso8SsdCO6Oh3IPvXVEUe0UO": "https://doi.org/10.1515/JPM.2002.077", "1qIncdbSZZZNRAE3bLUe7q1qRQdXTd5WZ": "https://doi.org/10.1002/pd.436", "1qKr-1enoxWSM7Z-EeZvJj2nOcyaGyqh6": "https://doi.org/10.1002/uog.26", "1qeA1snK3vWjaamk3FZjvjobARNBOjpbn": "https://pubmed.ncbi.nlm.nih.gov/3900834/", "1r5I6rflxhwyGi4RFK0TyqHHbDJOE1FR8": "https://doi.org/10.1016/S0002-9378(12)90842-X", "1r_HOxqkxJbvvRKodSzXNxyBQSUvhRxJW": "https://doi.org/10.1002/uog.7718", "1szOp4djinH-3H1pHoxQDisqucI1HlLxc": "https://doi.org/10.1007/s00247-016-3725-5", "1tx3Hj6Lp2z19p-0RB7ZfdWjv5HtRTwoi": "https://doi.org/10.1002/uog.20096", "1uqdye8VOPWr7UuTjfyEg1S1Cau8d0rn8": "https://doi.org/10.1002/uog.19", "1wBMJLyAIoeeNipq4ZO5Fa37q5DT0PVwk": "https://doi.org/10.1046/j.1469-0705.1998.12030175.x", "1wY6CkyUvlM0lNuxSeDCOUcGtAWvAMFZ3": "https://doi.org/10.1002/uog.26106", "1wxMKXgd2vgBk4Qy1k1Kkzd87rIYJAXrK": "https://doi.org/10.1002/uog.20157", "1yND3k9ePWOOBKpekOrAWYpgMJmN3Gzad": "https://doi.org/10.1016/S0029-7844(98)00414-1", "1z977DZ6xMNkmL6DJtBSKobv03_tO7J6d": "https://doi.org/10.1007/s00404-022-06808-6", "1zKvh31BffvZ8SrqKE1deKaC9xhGpNCmL": "https://doi.org/10.1002/uog.15884", "1zMcAilbmXjhX6s-QyfwLQad7Wf8g2sHn": "https://doi.org/10.1056/NEJM200001063420102", "1zZFmy2Exf0QIZY4VHrp6d4saYf7E1JRp": "https://doi.org/10.1002/uog.14720", "1KpMIUE9owo1P6MIjj5xBKtQWVeZx7iQI": "https://doi.org/10.1002/uog.12501", "1QMjYSSC5tFbho67xmwuo_LuHIlMoUFQH": "https://doi.org/10.1002/uog.19034", "1SGSprWTRIijyIjE3dkl1kBqMqjoKcOtI": "https://doi.org/10.1002/uog.13308", "1apHLTD6plhd4N3NCUDnKZ0e7L0PznqQn": "https://doi.org/10.1002/uog.23127", "1rNDqsDEN292lxnwl62ibgzBih-9NQM-h": "https://doi.org/10.1002/uog.20172", "1vQPPw-3GqZKetmbnCjf_OoJ95Xdq8YbU": "https://doi.org/10.1002/uog.23127", "1CwU7sjx3qtCLDNQ2h3vN2c9ZqA5Q0mWN": "https://doi.org/10.1002/uog.19073", "1cotKvfMkxUYrZPg-VV7rWfb69upnbXQK": "https://doi.org/10.1002/uog.19073", "1Jk4vdzn-w57E2lam21CQQIDjAfLnEwEn": "https://doi.org/10.1002/uog.19073", "11rWreOlbNj1NW5EFh4nkztfTCcVFyXuG": "https://doi.org/10.1016/j.ajog.2016.12.176", "17XwgQJzwOWC_FnnrHVqvosdWPq1UlZsH": "https://doi.org/10.1002/uog.4088", "1ZtSzsGKAK3-amYTIuyRhk3L-uIWTQd8A": "https://doi.org/10.1002/uog.4088", "19V1X8VcDolnTkjN3iJN1l5d9Pgei5F80": "https://doi.org/10.1002/uog.4088", "1iFX3HBEuzm_vHbgt7MPm2kQshHvGMCDR": "https://doi.org/10.1002/uog.4088", "1sTq85Pu8D3Vhn7R5KCCA1PJMtu-1cB_K": "https://doi.org/10.1016/0002-9378(85)90298-4", "1xuIJnIbuv6qSyPPPEAp6GT_ua-2C-tol": "https://doi.org/10.2214/AJR.17.19469", "13cMRWnBbPantKyoNZqaBwbuH-Z4jB1mG": "https://doi.org/10.1111/j.1471-0528.1999.tb08212.x", "1kw7K3Dl0y-_csN5k-pQRy1URfz6J289k": "https://doi.org/10.1111/j.1471-0528.1999.tb08213.x", "1jnL5uMZ0Vh8PdLEHf1f2wH3avRuduE0X": "https://doi.org/10.1002/uog.11169", "1ne3CCLpgp1gZBEfzWfmiHw-k5hj8fQJ_": "https://doi.org/10.1002/uog.27514", "17kw1vCf8vCLknpuvhHcYErt3AAPQ8tLq": "https://doi.org/10.1002/uog.6436", "1QIydV6PH5ZgZFyPrR-p9kKNCeX_TakyU": "https://doi.org/10.1002/uog.6436", "1r8nOclbJX3I3lAqJkjS8lkA1eHRSTrE0": "https://doi.org/10.1002/uog.23647", "1_MdNyGOt2BXzCbz75F-gJgldjTVKFhgr": "https://doi.org/10.1002/uog.23127", "1CONkjHadd6RivTNOypRJEGvgugXzeyWI": "https://doi.org/10.1016/j.jogc.2016.09.012", "1pP45XWUfrsZvygWoIrECuzrBQhzKqow8": "https://doi.org/10.1097/00006250-199102000-00012"};</script>
 <script>
@@ -2241,7 +2249,7 @@ window.FUS=(function(){
     return {ga:days/7};
   }
   function getEFW(){
-    if(input==='g'){const v=$('efw-g').value; if(v==='') return {err:'Enter the EFW in grams.'}; const g=+v; if(!(g>0)) return {err:'EFW must be a positive number of grams.'}; if(g>10000) return {err:'Check the units: EFW is entered in grams.'}; return {efw:g,src:'entered'};}
+    if(input==='g'){const v=$('efw-g').value; if(v==='') return {err:'Enter the EFW in grams.'}; const g=+v; if(!(g>0)) return {err:'EFW must be a positive number of grams.'}; if(g<10||g>10000) return {err:'Check the units: EFW is entered in grams.'}; return {efw:g,src:'entered'};}
     if(input==='awd'){
       const b=$('awd-bpd').value, o=$('awd-ofd').value, f=$('awd-fl').value;
       if(b===''||o===''||f==='') return {err:'Enter BPD, OFD and FL in millimetres.'};
@@ -3081,7 +3089,8 @@ window.FUS=(function(){
     if(w===''||d===''||gv===''){res.innerHTML='<p class="derived" style="margin:0">Enter gestational age at birth and birth weight.</p>';bwChart(null,null,k0);return}
     const W=+w,D=+d,g=+gv;
     if(!Number.isInteger(W)||!Number.isInteger(D)||D<0||D>6){res.innerHTML='<p class="err">Days must be a whole number from 0 to 6.</p>';bwChart(null,null,k0);return}
-    if(!(g>0)||g>BWMAX){res.innerHTML='<p class="err">Check the units: birth weight is entered in grams.</p>';bwChart(null,null,k0);return}
+    const bwMin=Math.min(...ks.map(k=>Math.min(...BW[k][sex].map(r=>r.c[0]))))/2;
+    if(!(g>0)||g>BWMAX||g<bwMin){res.innerHTML='<p class="err">Check the units: birth weight is entered in grams.</p>';bwChart(null,null,k0);return}
     const dg=bwDp(ks.map(k=>[BW[k][sex].find(r=>r.w===W),BW[k].cents]).filter(r=>r[0]),g), gT=gFmt(g,dg);
     let html='';
     ks.forEach((k,i)=>{
@@ -3450,7 +3459,7 @@ window.FUS=(function(){
   const keep=id=>!!curTab()&&NEED[pick].includes(id);
   ['dp-ua','dp-ri','dp-sdr','dp-mca','dp-cpr','dp-utl','dp-utr','dp-utm','dp-psv','dp-pw','dp-pd','dp-pua','dp-pri','dp-psdr'].forEach(id=>{const e=$(id);
     e.addEventListener('focus',()=>{const m=target(id); if(!keep(id)&&m!==pick)setPick(m)});
-    e.addEventListener('input',()=>{const m=target(id); if(!keep(id)&&document.activeElement===e&&m!==pick)setPick(m); else run()})});
+    e.addEventListener('input',()=>{const m=target(id); if(!keep(id)&&(document.activeElement===e||e.value!=='')&&m!==pick)setPick(m); else run()})});
   addEventListener('hashchange',()=>setTimeout(run,0));
   $('dp-clear').onclick=()=>{['dp-ua','dp-ri','dp-sdr','dp-mca','dp-cpr','dp-utl','dp-utr','dp-utm','dp-psv','dp-pw','dp-pd','dp-pua','dp-pri','dp-psdr'].forEach(id=>{$(id).value='';$(id).disabled=false});run()};
   ['ga-w','ga-d','edd','scan'].forEach(id=>{const e=$(id); if(e) e.addEventListener('input',run)});
@@ -13571,9 +13580,9 @@ window.FUS=(function(){
     let p='<div class="tw-row tw-head"><span></span><span>Twin A</span><span>Twin B</span></div>';
     p+='<div class="tw-row"><label>Previous scan <span class="derived">weeks+days</span></label>'+T2.map(t=>'<span class="tw-ga"><input type="number" min="15" max="37" step="1" id="'+iid(t,'pw')+'" aria-label="'+TN[t]+' previous scan weeks"><input type="number" min="0" max="6" step="1" id="'+iid(t,'pd')+'" aria-label="'+TN[t]+' previous scan days"></span>').join('')+'</div>';
     p+='<div class="tw-row"><label>Previous MCA-PSV <span class="derived">cm/s</span></label>'+T2.map(t=>'<input type="number" min="0" step="0.1" id="'+iid(t,'pp')+'" aria-label="'+TN[t]+' previous MCA-PSV">').join('')+'</div>';
-    $('tw-prev').innerHTML=p+'<div class="tw-hw" style="margin-top:6px"><span class="kd-lab" style="font-size:13px">How to measure'+twI('prev','the previous MCA-PSV')+'</span></div>'+twHelp('prev');
+    $('tw-prev').innerHTML=p+'<div class="tw-hw" style="margin-top:6px"><span class="kd-lab" style="font-size:14px">How to measure'+twI('prev','the previous MCA-PSV')+'</span></div>'+twHelp('prev');
     $('tw-par').innerHTML=[['mw','Mother weight','kg'],['mh','Mother height','cm'],['ph','Father height','cm']].map(a=>'<div class="field"><label for="tw-'+a[0]+'">'+a[1]+' ('+a[2]+')</label><input type="number" min="0" step="1" id="tw-'+a[0]+'" placeholder="'+GREF[a[0]]+'"></div>').join('');
-    $('tw-par').insertAdjacentHTML('afterend','<div class="tw-hw" style="margin-top:6px"><span class="kd-lab" style="font-size:13px">About these fields'+twI('par','the parents fields')+'</span></div>'+twHelp('par'));
+    $('tw-par').insertAdjacentHTML('afterend','<div class="tw-hw" style="margin-top:6px"><span class="kd-lab" style="font-size:14px">About these fields'+twI('par','the parents fields')+'</span></div>'+twHelp('par'));
     {const pb=document.querySelector('button[aria-controls="tw-how-par"]'), pd=$('tw-how-par'); if(pb&&pd) pb.addEventListener('click',()=>{const d=pd.closest('details'); if(d&&!d.open) d.open=true})}
     twWire($('twins')); twOneUpd();
   }
@@ -14098,6 +14107,7 @@ window.FUS=(function(){
     const a=ip(T.p5,x), m=ip(T.p50,x), b=ip(T.p95,x), g=headerGA();
     out.textContent=wd(m)+' wk';
     let s='5th to 95th: '+wd(a)+' to '+wd(b)+' weeks.';
+    const vd=$('bd-verdict'); if(vd){if(g==null){vd.hidden=true}else{const ea=g<Math.round(a), la=g>Math.round(b); vd.className='rc-verdict '+(ea||la?'v-out':'v-ok')+(ea?' v-up':la?' v-down':''); vd.innerHTML='<i aria-hidden="true"></i><span>'+(ea?'Larger than expected for the gestational age':la?'Smaller than expected for the gestational age':'Consistent with the gestational age')+'</span>'; vd.hidden=false}}
     if(g!=null){const t=wd(g); s+=g<Math.round(a)?' The gestational age in the bar above ('+t+') is earlier than this range.':g>Math.round(b)?' The gestational age in the bar above ('+t+') is later than this range.':' The gestational age in the bar above ('+t+') is within this range.'}
     const sd=x<25?0.7:x<35?0.9:x<45?1.2:x<55?1.5:2.0, a2=m-1.644854*sd*7, b2=m+1.644854*sd*7;
     s+=' With the Table 1 SD for this BD ('+sd.toFixed(1)+' weeks): '+wd(a2)+' to '+wd(b2)+' weeks.';
@@ -14489,6 +14499,207 @@ window.FUS=(function(){
 // Header height for the sticky results column
 (function(){const h=document.querySelector('header.top');if(!h)return;const set=()=>document.documentElement.style.setProperty('--hdr',h.offsetHeight+'px');set();window.addEventListener('resize',set);if(window.ResizeObserver)new ResizeObserver(set).observe(h);})();
 </script>
+<style>
+/* v61: one colour per verdict. Green within the normal range, red outside it, amber only where the source defines a
+   middle band, grey where there is no normal range. The direction is carried by the words and an arrow, never by colour. */
+:root{--ok:#1B6E3C;--ok-soft:#E3F2E8;--out:#B3261E;--out-soft:#FBE5E3;--mid:#8A4B00;--mid-soft:#FDF1D8;--nr:#4A4A4A;--nr-soft:#EEEEEE;--inp:#8A8A8A}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ok:#7BD8A0;--ok-soft:#16301F;--out:#F48C84;--out-soft:#3D1D1B;--mid:#F0B45B;--mid-soft:#3A2A12;--nr:#C3CDD1;--nr-soft:#26343A;--inp:#7E939B}}
+:root[data-theme="dark"]{--ok:#7BD8A0;--ok-soft:#16301F;--out:#F48C84;--out-soft:#3D1D1B;--mid:#F0B45B;--mid-soft:#3A2A12;--nr:#C3CDD1;--nr-soft:#26343A;--inp:#7E939B}
+.status.ok{background:var(--ok-soft);color:var(--ok)}
+.status.low,.status.high,.status.crit{background:var(--out-soft);color:var(--out)}
+.status.mid{background:var(--mid-soft);color:var(--mid)}
+.status.nr{background:var(--nr-soft);color:var(--nr)}
+.res-card{background:var(--surface)}
+.res-card .rc-row>.status{font-size:14px;padding:4px 12px 4px 10px;gap:8px}
+.res-card .rc-row>.status i{width:8px;height:8px}
+.res-card .rc-row>.status i::after{content:none!important}
+.res-card .rc-row>.status.ok{background:var(--ok-soft);color:var(--ok)}
+.res-card .rc-row>.status:is(.low,.high,.crit){background:var(--out-soft);color:var(--out)}
+.res-card .rc-row>.status.mid{background:var(--mid-soft);color:var(--mid)}
+.res-card .rc-row>.status.nr{background:var(--nr-soft);color:var(--nr)}
+.res-card .rc-row>.status:is(.low,.high,.crit,.mid,.nr) i{background:currentColor}
+.res-card,.res-card:has(.rc-row>.status){border-left-color:var(--line);background:var(--surface)!important}
+.res-card .rc-big{color:var(--fg)!important;font-size:18px;font-weight:700;margin:2px 0 6px}
+.rc-verdict{display:flex;align-items:center;gap:10px;margin:0 0 8px;font-family:var(--font-body);font-weight:700;font-size:22px;line-height:1.2;color:var(--fg)}
+.rc-verdict i{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:15px;font-weight:700;line-height:1;color:var(--surface);background:var(--fg)}
+.rc-verdict.v-ok{color:var(--ok)}.rc-verdict.v-ok i{background:var(--ok)}.rc-verdict.v-ok i::after{content:"\2713"}
+.rc-verdict.v-out{color:var(--out)}.rc-verdict.v-out i{background:var(--out)}.rc-verdict.v-out i::after{content:"!"}
+.rc-verdict.v-out.v-down i::after{content:"!\2193"}.rc-verdict.v-out.v-up i::after{content:"!\2191"}
+.rc-verdict.v-out:is(.v-down,.v-up) i{width:36px;border-radius:14px}
+.rc-verdict.v-mid{color:var(--mid)}.rc-verdict.v-mid i{background:var(--mid)}.rc-verdict.v-mid i::after{content:"!"}
+.rc-verdict.v-nr{color:var(--nr)}.rc-verdict.v-nr i{background:var(--nr)}.rc-verdict.v-nr i::after{content:"i";font-style:italic;font-family:Georgia,serif}
+.rc-verdict.v-info{color:var(--fg)}.rc-verdict.v-info i{display:none}
+.rc-verdict a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+html .res-card:has(>.rc-verdict.v-ok,>div>.rc-verdict.v-ok){border-left-color:var(--ok)!important}
+html .res-card:has(>.rc-verdict.v-out,>div>.rc-verdict.v-out){border-left-color:var(--out)!important}
+html .res-card:has(>.rc-verdict.v-mid,>div>.rc-verdict.v-mid){border-left-color:var(--mid)!important}
+html .res-card:has(>.rc-verdict.v-nr,>div>.rc-verdict.v-nr){border-left-color:var(--nr)!important}
+html .res-card:has(>.rc-verdict.v-info,>div>.rc-verdict.v-info){border-left-color:var(--accent)!important}
+#fgr-card:has(>.rc-verdict) .rc-big{display:none}
+/* the cross that marks this fetus on the chart takes the verdict colour */
+section.module[data-vd] svg path[stroke="var(--fg)"][stroke-width="2.2"][stroke-linecap="round"]{stroke:var(--vdc,var(--fg))}
+section.module[data-vd="ok"]{--vdc:var(--ok)}section.module[data-vd="out"]{--vdc:var(--out)}section.module[data-vd="mid"]{--vdc:var(--mid)}section.module[data-vd="nr"]{--vdc:var(--nr)}
+.tw-vd{margin:0 0 8px}
+.tw-vd .rc-verdict{font-size:18px;margin:0 0 4px}.tw-vd .rc-verdict i{width:24px;height:24px;font-size:14px}
+.tw-vd .rc-verdict.v-out:is(.v-down,.v-up) i{width:32px}
 
+/* v61 readability: darker input borders (3:1 or more), typed values in the body font, help lines behind the i buttons */
+.field input,.kd-row input,.cns-select,.search input,select,input[type=number],input[type=date],input[type=search],input[type=text]{border-color:var(--inp)}
+input,select,textarea{font-family:var(--font-body)}
+.kd-m .kd-one{display:none}
+.kd-m:has(.kd-i[aria-expanded="true"]) .kd-one{display:block}
+.tw-hw .kd-one{display:none}
+.stack[data-g]>.kd-one{display:none}
+.stack[data-g]:has(>.kd-lab .kd-i[aria-expanded="true"])>.kd-one{display:block}
+.tw-row:has(.kd-i[aria-expanded="true"]) + .tw-hw .kd-one{display:block}
+.module-head p{max-width:none}
 
-</body></html>
+/* v61 header: one slim row on wider screens; the Copy all button keeps its place so the header does not change height */
+#copyall[hidden]{display:inline-flex!important;visibility:hidden}
+@media (min-width:761px){
+  header.top>.wrap{display:flex;align-items:center;gap:10px 18px;padding-block:6px}
+  header.top .top-row{display:contents}
+  header.top .brand{order:0;flex:none}
+  header.top .brand p{display:none}
+  header.top .dating{order:1;flex:1 1 auto;border-top:0;padding-block:0;gap:10px;align-items:center;flex-wrap:nowrap}
+  header.top .dating .field>.lbl,header.top .dating #f-ga>label,header.top .dating #f-edd>label,header.top .dating #f-scan>label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  header.top .dating .ga-clear{padding-bottom:0}
+  header.top .dating .seg button{white-space:nowrap}
+  header.top .ga-readout{margin-left:auto;padding:4px 10px}
+  header.top .ga-readout b{font-size:20px}
+  header.top .ga-msg{position:absolute;left:16px;right:16px;top:100%;margin:0;padding:4px 10px;background:var(--surface);border:1px solid var(--line);border-radius:0 0 8px 8px}
+  header.top>.wrap{position:relative}
+  header.top .copyall-wrap{order:2;margin-left:0}
+  header.top .home-btn{order:3;flex:none}
+}
+@media (max-width:600px){
+  header.top .dating{flex-wrap:nowrap;gap:6px 8px}
+  header.top .dating .seg button{padding:6px 7px;white-space:nowrap}
+  header.top .wd input{width:50px!important;padding:6px 6px!important}
+  header.top .dating .ga-clear{padding-bottom:0;flex:none}
+  header.top .dating:has(#f-edd:not([hidden])){flex-wrap:wrap}
+}
+@media (min-width:761px) and (max-width:1000px){
+  header.top .ga-readout span{display:none}
+  header.top .copyall-btn span{display:none}
+  header.top .copyall-btn{padding:7px 10px}
+}
+</style>
+<script>
+// v61: every result opens with a plain verdict, then the numbers. The verdict is read from the result the module has
+// already graded (its status chip), so no calculation changes; one colour per verdict across all modules.
+(function(){
+  const $=id=>document.getElementById(id);
+  const T=e=>e?e.textContent.replace(/\s+/g,' ').trim():'';
+  const CL=b=>['ok','low','high','crit','mid','nr'].find(c=>b.classList.contains(c))||'';
+  const W={ok:'Within normal range',lo:'Below normal range',hi:'Above normal range'};
+  const dirOf=(c,t)=>c==='low'?'down':c==='high'?'up':/below|under|or less|less than|narrow|smaller|lower/i.test(t)?'down':/above|or more|more than|wide|larger|higher/i.test(t)?'up':'';
+  const prim=card=>card.querySelector('.rc-row>.status,.bw-row>.status');
+  const label=card=>{const w=card.querySelector('.rc-what'); if(!w)return ''; let s=''; for(const n of w.childNodes){if(n.nodeType===1&&n.tagName==='B')break; s+=n.textContent} return s.replace(/\s+/g,' ').replace(/\((calc\.|sum)\)/,'').trim().replace(/\s+at \d+\+\d$/,'').trim()};
+  const outOfChart=card=>[...card.querySelectorAll('.derived,.err')].some(e=>/ covers .+ to /.test(T(e)));
+  function generic(card){
+    const b=prim(card);
+    if(!b) return outOfChart(card)?{k:'nr',t:'Outside the gestational age range of this chart'}:null;
+    const c=CL(b), t=T(b), pos=(t.match(/:\s*(possible .+)$/i)||[])[1];
+    if(/^(within|below|above) range$/i.test(t)||/largest seen|smallest seen/i.test(t)){
+      const d=/^within|at or below largest/i.test(t)?'':dirOf(c,t);
+      return d?{k:'out',d,t:(d==='down'?'Below':'Above')+' the range seen in the study'}:{k:'ok',t:'Within the range seen in the study'}}
+    if(c==='ok') return {k:'ok',t:W.ok};
+    if(c==='nr') return {k:'nr',t:/no normal range/i.test(t)?'Reference value only: no normal range published':/not assessed/i.test(t)?'Not assessed':t};
+    if(c==='mid') return {k:'mid',t:t};
+    const d=dirOf(c,t);
+    return {k:'out',d,t:(d==='down'?W.lo:d==='up'?W.hi:'Outside normal range')+(pos?': '+pos:'')};
+  }
+  // module wording (corrections document, section 5); anything not listed reads Within / Below / Above normal range
+  const R={
+    'result':card=>{const b=prim(card); if(!b)return null; const c=CL(b);
+      return c==='ok'?{k:'ok',t:W.ok}:c==='high'?{k:'out',d:'up',t:'Large for gestational age'}:{k:'out',d:'down',t:'Below the 10th centile: <a href="#fgr">check the FGR criteria</a>'}},
+    'bw-result':card=>{const b=prim(card); if(!b)return null; const c=CL(b);
+      return c==='ok'?{k:'ok',t:W.ok}:c==='high'?{k:'out',d:'up',t:'Large for gestational age at birth'}:{k:'out',d:'down',t:'Small for gestational age at birth'}},
+    'bm-card':card=>{const rows=[...card.querySelectorAll('.rc-row')], def=rows.find(r=>/\(default\)/.test(T(r))&&r.querySelector('.status'));
+      if(def){const b=def.querySelector('.status'),c=CL(b),d=dirOf(c,T(b)); return c==='ok'?{k:'ok',t:W.ok}:{k:'out',d,t:d==='down'?W.lo:W.hi}} return generic(card)},
+    'fgr-card':card=>{const b=prim(card); if(!b)return null; const c=CL(b), big=T(card.querySelector('.rc-big'));
+      return c==='crit'?{k:'out',t:big}:(c==='low'||c==='mid')?{k:'mid',t:'Small for gestational age (FGR criteria not met)'}:c==='ok'?{k:'ok',t:'Normal growth'}:{k:'nr',t:big}},
+    'dp-card':card=>{const b=prim(card); if(!b)return generic(card); const m=card.dataset.m, c=CL(b), t=T(b);
+      if(/MoM/.test(t)) return /^Below 1\.29/.test(t)?{k:'ok',t:'Normal'}:/^1\.29/.test(t)?{k:'mid',t:'Possible mild anaemia'}:/^1\.50/.test(t)?{k:'out',d:'up',t:'Possible moderate anaemia'}:{k:'out',d:'up',t:'Possible severe anaemia'};
+      if(m==='PSV') return generic(card);
+      if(c==='ok') return {k:'ok',t:'Normal'};
+      return /below/i.test(t)?{k:'out',d:'down',t:'Abnormal: below the 5th centile'}:{k:'out',d:'up',t:'Abnormal: above the 95th centile'}},
+    'af-card':card=>{const cut=[...card.querySelectorAll('.rc-row')].find(r=>/^Fixed cut-off/.test(T(r.querySelector('.hint'))));
+      if(cut){const c=CL(cut.querySelector('.status')); return c==='ok'?{k:'ok',t:'Normal amniotic fluid'}:c==='low'?{k:'out',d:'down',t:'Oligohydramnios'}:{k:'out',d:'up',t:'Hydramnios'}}
+      return generic(card)},
+    'cns-card':card=>{const b=prim(card);
+      if(!b) return card.querySelector('.rc-row>.derived')?{k:'nr',t:'No normal range'}:generic(card);
+      const t=T(b); if(t==='Below 10 mm') return {k:'ok',t:'Normal'};
+      if(/^(Mild|Moderate|Severe)$/.test(t)) return {k:'out',t:t+' ventriculomegaly'};
+      return generic(card)},
+    'gu-card':card=>{const b=prim(card); if(!b)return generic(card); const t=T(b);
+      if(t==='Normal') return {k:'ok',t:'Normal'}; if(t==='Low risk') return {k:'mid',t:'UTD A1, low risk'}; if(t==='Increased risk') return {k:'out',t:'UTD A2-3, increased risk'};
+      return generic(card)},
+    'lb-card':card=>{const b=prim(card); if(!b)return generic(card); const t=T(b), c=CL(b);
+      if(/lethal/i.test(t)) return {k:'out',t:t}; if(/^At or above cut-off$/.test(t)) return {k:'ok',t:'Not in the lethal range'};
+      const v=generic(card), L=label(card), bone=(L.match(/^(Femur|Humerus|Tibia|Fibula|Radius|Ulna|Clavicle)\b/i)||[])[1];
+      if(v&&v.k==='out'&&v.d==='down'&&bone) v.t='Short '+bone.toLowerCase()+': below normal range';
+      return v},
+    'sm-card':card=>{const b=prim(card); if(!b)return generic(card); const c=CL(b), t=T(b);
+      // a soft marker is named only where the source gives a cut-off for it; a centile chart reads within, below or above normal range
+      if(/\d(st|nd|rd|th)\b|SD\b/.test(t)) return generic(card);
+      if(c==='nr') return {k:'nr',t:T(card.querySelector('.rc-big'))||t};
+      if(c==='ok') return {k:'ok',t:'No soft marker'};
+      const L=label(card); return {k:'mid',t:'Soft marker present: '+(/^[A-Z][a-z]/.test(L)?L.charAt(0).toLowerCase()+L.slice(1):L)}},
+    'dt-result':card=>{const b=[...card.querySelectorAll('.status')].find(x=>/redating/i.test(T(x))); if(!b)return null;
+      return /Supports redating/.test(T(b))?{k:'info',t:'Redate by ultrasound'}:{k:'info',t:'Keep the menstrual due date'}}
+  };
+  // chips whose wording or colour changes (section 5): middle bands to amber, risk and dating to no colour
+  const RETAG=[
+    [/^1\.29 MoM or more$/,b=>b.className=b.className.replace(/\b(low|crit|high)\b/,'mid')],
+    [/^Below the 10th centile$/,b=>{if(b.closest('#fgr-card'))b.className=b.className.replace(/\blow\b/,'mid')}],
+    [/^Low risk$/,b=>{if(b.closest('#gu'))b.className=b.className.replace(/\blow\b/,'mid')}],
+    [/^UTD P1, low risk$/,b=>b.className=b.className.replace(/\blow\b/,'mid')],
+    [/^(Supports redating|Within the redating limit)$/,b=>b.className=b.className.replace(/\b(ok|low)\b/,'nr')],
+    [/^1 in [\d,]+ after$/,b=>b.className=b.className.replace(/\b(ok|high)\b/,'nr')],
+    [/^Within the serial range$/,b=>{b.lastChild.textContent='As expected from the previous scan'}],
+    [/^Above the serial range$/,b=>{b.lastChild.textContent='Higher than expected from the previous scan'}],
+    [/^Below the serial range$/,b=>{b.lastChild.textContent='Lower than expected from the previous scan';b.className=b.className.replace(/\blow\b/,'nr')}],
+    [/^Not in hypoplasia range$/,b=>{b.lastChild.textContent='Not in the pulmonary hypoplasia range'}],
+    [/^TTTS criteria not met$/,b=>{b.lastChild.textContent='No TTTS'}],
+    [/^Polyhydramnios-oligohydramnios sequence: Quintero stage /,b=>{b.lastChild.textContent=b.lastChild.textContent.replace('Polyhydramnios-oligohydramnios sequence: Quintero stage','TTTS, Quintero stage')}],
+    [/^DVP criteria met, bladders not discordant/,b=>b.className=b.className.replace(/\blow\b/,'mid')],
+    [/^Criteria for selective FGR not met \(\d+ of \d+ contributory\)$/,b=>{const m=b.lastChild.textContent.match(/\((\d+) of (\d+)/);
+      if(+m[1]>0){b.lastChild.textContent='Contributory criteria only ('+m[1]+' of '+m[2]+')';b.className=b.className.replace(/\bok\b/,'mid')} else b.lastChild.textContent='No selective FGR'}],
+    [/^ISUOG 2016: both twins small for gestational age/,b=>b.className=b.className.replace(/\blow\b/,'mid')]
+  ];
+  function retag(root){root.querySelectorAll('.status').forEach(b=>{if(b.dataset.v61)return; const t=T(b); for(const [re,f] of RETAG){if(re.test(t)){f(b);break}} b.dataset.v61='1'})}
+  // twins EFW discordance: the percentage reads with its meaning
+  function twDisc(){const e=$('tw-disc'); if(!e)return; const b=e.querySelector('.bw-row>.status'); if(!b||b.dataset.vd)return; const p=T(b), c=CL(b);
+    if(c==='low')b.className=b.className.replace(/\blow\b/,'mid');
+    b.lastChild.textContent=(c==='crit'?'Significant EFW discordance: ':c==='low'?'EFW discordance above 20%: ':'EFW discordance: ')+p; b.dataset.vd='1'}
+  // twins growth card: one verdict line per twin
+  function twCard(){const card=$('tw-card'); if(!card)return; const rows=[...card.querySelectorAll(':scope>.rc-row')].filter(r=>r.querySelector('.tw-t')&&r.querySelector('.status'));
+    let h=''; rows.forEach(r=>{const b=r.querySelector('.status'),c=CL(b),t=T(b); let d=dirOf(c,t);
+      if(c==='crit'&&!d){const n=parseFloat((t.match(/[\d.]+/)||['0'])[0]); d=/^>/.test(t)||n>=50?'up':'down'}
+      const v=c==='ok'?{k:'ok',t:W.ok}:c==='nr'?{k:'nr',t:t}:{k:'out',d,t:d==='down'?W.lo:d==='up'?W.hi:'Outside normal range'};
+      h+='<p class="rc-verdict v-'+v.k+(v.d?' v-'+v.d:'')+'"><i aria-hidden="true"></i><span>'+T(r.querySelector('.tw-t'))+': '+v.t.charAt(0).toLowerCase()+v.t.slice(1)+'</span></p>'});
+    let box=card.querySelector(':scope>.tw-vd'); if(!h){if(box)box.remove();return}
+    if(box&&box.dataset.h===h)return; if(!box){box=document.createElement('div');box.className='tw-vd';card.prepend(box)} box.dataset.h=h; box.innerHTML=h}
+  function verdict(card,fn){
+    let v=null; try{v=fn(card)}catch(e){v=null}
+    const sec=card.closest('section.module'); if(sec){const k=v?v.k:''; if(sec.dataset.vd!==k){if(k)sec.dataset.vd=k; else delete sec.dataset.vd}}
+    let p=card.querySelector(':scope>.rc-verdict.v61, :scope>div>.rc-verdict.v61');
+    if(!v){if(p)p.remove();return}
+    const cls='rc-verdict v61 v-'+v.k+(v.d?' v-'+v.d:''), key=cls+'|'+v.t;
+    if(p&&p.dataset.key===key)return;
+    if(!p){p=document.createElement('p');const host=card.querySelector(':scope>.bw-out')||card;host.prepend(p)}
+    p.className=cls; p.dataset.key=key; p.setAttribute('role','status'); p.innerHTML='<i aria-hidden="true"></i><span>'+v.t+'</span>';
+  }
+  const CARDS=['result','bw-result','bm-card','fgr-card','dp-card','af-card','cns-card','fc-card','ht-card','ab-card','gu-card','lb-card','sm-card','dt-result'];
+  let busy=false;
+  function pass(){if(busy)return; busy=true; obs.disconnect();
+    try{retag(document); CARDS.forEach(id=>{const c=$(id); if(c)verdict(c,R[id]||generic)}); twDisc(); twCard()}
+    finally{busy=false; obs.observe(document.querySelector('main')||document.body,{childList:true,subtree:true,characterData:true})}}
+  const obs=new MutationObserver(pass);
+  pass();
+})();
+</script>
+</body>
+</html>
